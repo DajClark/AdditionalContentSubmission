@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_margin="16dp"
+              android:weightSum="1">
+
+    <TextView
+            android:id="@+id/gameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/game_label"/>
+
+    <EditText
+            android:id="@+id/gameTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/game_title"/>
+
+    <TextView
+            android:id="@+id/gamePlatformLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/game_platform_label"/>
+
+    <EditText
+            android:id="@+id/gamePlatform"
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/notification_large_icon_height"
+            android:hint="@string/game_list_platform"/>
+
+    <TextView
+            android:id="@+id/gameDescriptionLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/game_description_label"/>
+
+    <EditText
+            android:id="@+id/gameDescription"
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/notification_large_icon_height"
+            android:hint="@string/game_list_description"/>
+
+    <Button
+            android:id="@+id/completedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <CheckBox
+            android:id="@+id/gameComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/game_complete_label"/>
+
+</LinearLayout>

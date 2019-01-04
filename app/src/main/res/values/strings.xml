@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">AdditionalContentSubmission</string>
+    <string name="game_title">Game</string>
+    <string name="game_list_platform">Platform</string>
+    <string name="game_list_description">Game Description</string>
+    <string name="game_label">Game:</string>
+    <string name="game_platform_label">Platform:</string>
+    <string name="game_description_label">Description:</string>
+    <string name="game_complete_label">Game Complete?</string>
+    <string name="new_game">New Game</string>
 </resources>
