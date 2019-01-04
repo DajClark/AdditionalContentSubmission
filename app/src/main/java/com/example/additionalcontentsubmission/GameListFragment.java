@@ -104,7 +104,8 @@ public class GameListFragment extends Fragment {
                     Toast.LENGTH_SHORT)
                     .show();
 
-
+            Intent intent = PagerActivity.newIntent(getActivity(), mGame.getGameID());
+            startActivity(intent);
 
         }
 
