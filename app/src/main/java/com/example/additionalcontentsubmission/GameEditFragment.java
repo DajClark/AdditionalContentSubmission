@@ -1,34 +1,40 @@
 package com.example.additionalcontentsubmission;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import java.util.Date;
+import java.util.UUID;
 
 public class GameEditFragment extends Fragment {
 
 
-    public static GameEditFragment newInstance(Game game) {
+    // Method to create new instance of object to pass arguments from activity.
+    public static GameEditFragment newInstance(UUID gameID) {
+        // Bundle for holding serialized arguments.
         Bundle args = new Bundle();
-        args.putSerializable(EXTRA_GAME, game);
+        args.putSerializable(EXTRA_GAME_ID, gameID);
 
+        // Create new fragment instance.
         GameEditFragment fragment = new GameEditFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     // Key to pass game type using bundle.
-    final static String EXTRA_GAME = "game";
+    final static String EXTRA_GAME_ID = "id";
+
+    // Stores the ID of the game being passed by the activity.
+    private UUID gameID;
 
     // Stores game object for reading and updating within the onCreateView call.
     private Game game;
@@ -42,9 +48,33 @@ public class GameEditFragment extends Fragment {
         // Gets the arguments passed by the calling Activity.
         Bundle args = getArguments();
         if (args != null) {
-            game = (Game) args.getSerializable(EXTRA_GAME);
+            gameID = (UUID) args.getSerializable(EXTRA_GAME_ID);
         }
 
+        game = GameList.get(getActivity()).getGame(gameID);
+
+        // Adds the options menu to view.
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_delete_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.delete_game:
+
+                GameList.get(getActivity()).removeGame(gameID);
+                getActivity().finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Nullable

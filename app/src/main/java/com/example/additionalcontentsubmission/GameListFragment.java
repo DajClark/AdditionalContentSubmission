@@ -28,6 +28,7 @@ public class GameListFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+    // Creates the options menu on the fragment.
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -39,9 +40,11 @@ public class GameListFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.new_game:
 
+                // Creates new game and add to list.
                 Game game = new Game("","","");
                 GameList.get(getActivity()).addGame(game);
 
+                // Starts the pager activity and passes new game ID.
                 Intent intent = PagerActivity.newIntent(getActivity(), game.getGameID());
                 startActivity(intent);
 
