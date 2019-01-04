@@ -23,6 +23,33 @@ public class GameListFragment extends Fragment {
 
         // Calls the required onCreate methods from super class.
         super.onCreate(savedInstanceState);
+
+        // Adds the options menu to view.
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_game_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.new_game:
+
+                Game game = new Game("","","");
+                GameList.get(getActivity()).addGame(game);
+
+                Intent intent = PagerActivity.newIntent(getActivity(), game.getGameID());
+                startActivity(intent);
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
