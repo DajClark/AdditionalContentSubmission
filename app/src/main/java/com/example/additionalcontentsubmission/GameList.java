@@ -27,16 +27,6 @@ public class GameList implements Serializable {
 
         // Initialises ArrayList to hold game objects.
         gameList = new ArrayList<>();
-
-        // Sample test data added to the collection.
-        if (gameListModel == null) {
-            Game game1 = new Game("Smash Brothers", "Switch", "Fighting game for up to 8 players");
-            gameList.add(game1);
-            Game game2 = new Game("Skyrim", "PS3", "Single player fantasy role playing game");
-            gameList.add(game2);
-            Game game3 = new Game("Stardew Valley", "PC", "Single player country life simulator");
-            gameList.add(game3);
-        }
     }
 
     // Gets and returns a single game object from the list to the calling class.
@@ -77,5 +67,14 @@ public class GameList implements Serializable {
         gameList.remove(position);
     }
 
+    // Calls the serialize list method in the utility class.
+    public static void saveData(Context context) {
+        SerializeUtility.serializeObject(gameList,context);
+    }
+
+    // Calls the method to load serialized data into the list of games.
+    public static void loadData(Context context) {
+        gameList = SerializeUtility.deserializeObject(gameList,context);
+    }
 
 }

@@ -49,7 +49,6 @@ public class GameListFragment extends Fragment {
                 startActivity(intent);
 
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -85,6 +84,19 @@ public class GameListFragment extends Fragment {
 
 
     private void updateUI(){
+
+        // Loads the serialized list of games from file.
+        GameList.loadData(getActivity());
+
+//        // Sample test data added to the collection.
+//        if (GameList.get(getActivity()).getGames().size() == 0) {
+//            Game game1 = new Game("Smash Brothers", "Switch", "Fighting game for up to 8 players");
+//            GameList.get(getActivity()).addGame(game1);
+//            Game game2 = new Game("Skyrim", "PS3", "Single player fantasy role playing game");
+//            GameList.get(getActivity()).addGame(game2);
+//            Game game3 = new Game("Stardew Valley", "PC", "Single player country life simulator");
+//            GameList.get(getActivity()).addGame(game3);
+//        }
 
         // Get the current list of games from the GameList model.
         ArrayList gameList;

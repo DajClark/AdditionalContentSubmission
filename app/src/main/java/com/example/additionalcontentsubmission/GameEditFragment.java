@@ -1,7 +1,5 @@
 package com.example.additionalcontentsubmission;
 
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -57,6 +55,7 @@ public class GameEditFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+    // Inflates options menu to fragment.
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -68,7 +67,9 @@ public class GameEditFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.delete_game:
 
+                // Removes the game and closes the activity.
                 GameList.get(getActivity()).removeGame(gameID);
+                GameList.saveData(getActivity());
                 getActivity().finish();
                 return true;
 
@@ -116,6 +117,7 @@ public class GameEditFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 game.setTitle(s.toString());
+                GameList.saveData(getActivity());
             }
 
             @Override
@@ -133,6 +135,7 @@ public class GameEditFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 game.setPlatform(s.toString());
+                GameList.saveData(getActivity());
             }
 
             @Override
@@ -150,6 +153,7 @@ public class GameEditFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 game.setDescription(s.toString());
+                GameList.saveData(getActivity());
             }
 
             @Override
@@ -174,6 +178,7 @@ public class GameEditFragment extends Fragment {
                     dateButton.setText("");
                     game.setComplete(false);
                 }
+                GameList.saveData(getActivity());
             }
         });
 

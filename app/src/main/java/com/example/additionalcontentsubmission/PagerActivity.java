@@ -18,6 +18,7 @@ public class PagerActivity extends AppCompatActivity {
     // String to send and retrieve data in key value pair.
     private static final String EXTRA_GAME_ID = "game_id";
 
+    // Holds the view pager and list of games.
     private ViewPager mViewPager;
     private List<Game> mGames;
 
